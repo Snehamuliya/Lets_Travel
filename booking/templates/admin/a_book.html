@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    {% extends 'admin/a_header.html' %}
+{% block content %}
+    <br>
+    <h3 align="center">Booking data</h3>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Mail id</th>
+        <th scope="col">Aadhar-no</th>
+        <th scope="col">Username</th>
+        <th scope="col">Trip</th>
+        <th scope="col">Query</th>
+        <th scope="col">No of member</th>
+        <th scope="col">Trip price</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for b_data in book_data %}
+      <tr>
+     
+        <td>{{ b_data.name}}</td>
+        <td>{{ b_data.address}}</td>
+        <td>{{ b_data.phone }}</td>
+        <td>{{ b_data.mail_id}}</td>
+        <td>{{ b_data.aadhar_no}}</td>
+        <td>{{ b_data.username }}</td>
+        <td>{{ b_data.trip}}</td>
+        <td>{{ b_data.query}}</td>
+        <td>{{ b_data.no_of_member}}</td>
+        <td>{{ b_data.trip_price }}</td>
+        <td>{{ b_data.amount}}</td>
+        <td><form method = post>
+            {% csrf_token %}
+            <input type = "text" value="{{b_data.pay_id}}" name="bookdata" hidden>
+            <input type="submit" value="delete" name="book">
+        </form>
+        <br>
+            <form method = post>
+              {% csrf_token %}
+                 <input type = "text" value="{{b_data.pay_id}}" name="bo_id" hidden>
+                 <input type="submit" value="update" name="upbook">
+            </form>
+            <br>
+            <form method = post>
+              {% csrf_token %}
+                <input type = "text" value="{{ b_data.name}}" name="nam" hidden>
+                <input type = "text" value="{{ b_data.address}}" name="add" hidden>
+                <input type = "text" value="{{ b_data.phone }}" name="mob" hidden>
+                <input type = "text" value="{{ b_data.mail_id}}" name="mail" hidden>
+                <input type = "text" value="{{ b_data.aadhar_no}}" name="aadhar" hidden>
+                <input type = "text" value="{{ b_data.username }}" name="user" hidden>
+                <input type = "text" value="{{ b_data.trip}}" name="trip" hidden>
+                <input type = "text" value="{{ b_data.query}}" name="que" hidden>
+                <input type = "text" value="{{ b_data.no_of_member}}" name="member" hidden>
+                <input type = "text" value="{{ b_data.trip_price }}" name="price" hidden>
+                <input type = "text" value="{{ b_data.amount}}" name="amount" hidden>
+                 <input type = "text" value="{{b_data.pay_id}}" name="bo_id" hidden>
+                 <input type="submit" value="receipt" name="bookrec">
+            </form>
+      </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'navbar.html' %}
+{% block content %}
+
+<h2 align="center">Activity</h2>
+<!-- activity start -->
+<div class="container-fluid">
+<table class="table table-bordered">
+    <tr>
+      <th scope="col">book id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Aadhar</th>
+      <th scope="col">Username</th>
+      <th scope="col">Trip</th>
+      <th scope="col">Query</th>
+      <th scope="col">No of members</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total amount</th>
+      <th scope="col">Action</th>
+    </tr>
+{% for bookdata in s_data %}
+<tr>
+    <td>{{ bookdata.b_id}}</td>
+    <td>{{ bookdata.name}}</td>
+    <td>{{ bookdata.address }}</td>
+    <td>{{ bookdata.phone}}</td>
+    <td>{{ bookdata.mail_id}}</td>
+    <td>{{ bookdata.aadhar_no }}</td>
+    <td>{{ bookdata.username}}</td>
+    <td>{{ bookdata.trip}}</td>
+    <td>{{ bookdata.query }}</td>
+    <td>{{ bookdata.no_of_member}}</td>
+    <td>{{ bookdata.trip_price }}</td>
+    <td>{{ bookdata.amount}}</td>
+    <td><form method = post>
+        {% csrf_token %}
+        <input type = text value="{{ bookdata.pay_id}}" name="pay" hidden>
+        <input type="submit" value="delete" name="del">
+    </form>
+  <br>
+    <form method = post>
+        {% csrf_token %}
+        <input type = text value="{{ bookdata.b_id}}" name="rid" hidden>
+        <input type = text value="{{ bookdata.pay_id}}" name="pay" hidden>
+        <input type = text value="{{ bookdata.name}}" name="nam" hidden>
+        <input type = text value="{{ bookdata.address}}" name="add" hidden>
+        <input type = text value="{{ bookdata.phone}}" name="mob" hidden>
+        <input type = text value="{{ bookdata.mail_id}}" name="mail" hidden>
+        <input type = text value="{{ bookdata.aadhar_no}}" name="aadhar" hidden>
+        <input type = text value="{{ bookdata.username}}" name="user" hidden>
+        <input type = text value="{{ bookdata.trip}}" name="trip" hidden>
+        <input type = text value="{{ bookdata.query}}" name="que" hidden>
+        <input type = text value="{{ bookdata.no_of_member}}" name="member" hidden>
+        <input type = text value="{{ bookdata.trip_price}}" name="price" hidden>
+        <input type = text value="{{ bookdata.amount}}" name="amount" hidden>
+        <input type="submit" value="receipt" name="receipt">
+    </form></td>
+
+</tr>
+{% endfor %}
+    </table>
+<!-- activity end -->
+</div>
+{% include 'footer.html' %}
+{% endblock %}
+
+</body>
+</html>

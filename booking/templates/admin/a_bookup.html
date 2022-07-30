@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    {% extends 'admin/a_header.html' %}
+{% block content %}
+<h1 align="center">book update</h1>
+<div class="container">
+    <br>
+  <table align="center">
+    <form method = post>
+      {% csrf_token %}
+      <tbody>
+          <tr><td>  Name =</td><td> <input type = "text" value="{{ book_data.pay_id}}" name="bpay" hidden></td></tr>
+          <tr><td>  Name =</td><td> <input type = "text" value="{{ book_data.name}}" name="bname"></td></tr>
+          <tr><td>  Email =</td><td> <input type = "text" value="{{ book_data.mail_id }}" name="bmail"></td></tr>
+          <tr><td>  Address =</td><td> <input type = "text" value="{{ book_data.address}}" name='badd'></td></tr>
+          <tr><td>  Phone =</td><td> <input type = "text" value="{{ book_data.phone}}" name='bpho'></td></tr>
+          <tr><td>  Aadhar_no =</td><td> <input type = "text" value="{{ book_data.aadhar_no}}" name='badh'></td></tr>
+          <tr><td>  Username =</td><td> <input type = "text" value="{{ book_data.username}}" name='buser'></td></tr>
+          <tr><td>  Trip =</td><td> <input type = "text" value="{{ book_data.trip}}" name='btrio'></td></tr>
+          <tr><td>  Query =</td><td> <input type = "text" value="{{ book_data.query}}" name='bque'></td></tr>
+          <tr><td>  No of memeber =</td><td> <input type = "text" value="{{ book_data.no_of_member}}" name='bmem'></td></tr>
+          <tr><td>  Trip price =</td><td> <input type = "text" value="{{ book_data.trip_price}}" name='bpri'></td></tr>
+          <tr><td>  Amount =</td><td> <input type = "text" value="{{ book_data.amount}}" name='bamo'></td></tr>
+
+          <tr><td><br><td></tr>
+            <tr><td> <input type = "submit" value="update" name="update"></td></tr>
+        </tr>
+        
+      </tbody>
+    </form>
+    </table>
+  </div>
+{% endblock %}
+</body>
+</html>
